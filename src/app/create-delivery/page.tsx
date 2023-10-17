@@ -24,6 +24,14 @@ export default function CreateDelivery() {
   } = useForm<Inputs>();
   const router = useRouter();
 
+  const getMinDeliveryDate = () => {
+    const currentDate = new Date();
+    const nextDate = new Date(currentDate);
+    nextDate.setDate(currentDate.getDate() + 1);
+
+    return nextDate.toISOString().split("T")[0];
+  };
+
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const body: ICreateDelivery = {
       ...data,
@@ -44,8 +52,6 @@ export default function CreateDelivery() {
     }).then(() => {
       router.push("/");
     });
-
-    console.log("date", body);
   };
 
   return (
@@ -68,7 +74,7 @@ export default function CreateDelivery() {
             label="Digite o a data de entrega:"
             type="date"
             name="deliveryDate"
-            min={new Date().toISOString().split("T")[0]}
+            min={getMinDeliveryDate()}
             register={register}
             key="deliveryDate"
             required

@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { FiArrowRight, FiTrash2, FiMapPin, FiArrowLeft } from "react-icons/fi";
+import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
 
 interface IPaginatorProps {
   nextPage: () => void;
@@ -8,9 +7,16 @@ interface IPaginatorProps {
 
 export default function Paginator({ nextPage, previousPage }: IPaginatorProps) {
   return (
-    <>
-      <FiArrowLeft onClick={previousPage} className="text-sky-90 w-4 h-4" />
-      <FiArrowRight onClick={nextPage} className="text-sky-90 w-4 h-4" />
-    </>
+    <div className="flex gap-3">
+      <FiArrowLeft
+        onClick={previousPage}
+        className="text-sky-900 w-6 h-6 cursor-pointer"
+      />
+
+      <FiArrowRight
+        onClick={nextPage}
+        className="text-sky-900 w-6 h-6 cursor-pointer"
+      />
+    </div>
   );
 }
