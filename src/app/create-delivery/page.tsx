@@ -4,6 +4,9 @@ import Header from "../components/header";
 import Input from "../components/input";
 import { ICreateDelivery } from "../models/delivery";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { FiArrowLeft } from "react-icons/fi";
+import BackButton from "../components/backButton";
 
 export type Inputs = {
   name: string;
@@ -33,7 +36,7 @@ export default function CreateDelivery() {
       deliveryDate: new Date(data.deliveryDate),
     };
 
-    fetch("http://localhost:4000/delivery", {
+    fetch(`${process.env.BASE_URL}/delivery`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -49,7 +52,11 @@ export default function CreateDelivery() {
 
   return (
     <div>
-      <Header></Header>
+      <Header>
+        <Header>
+          <BackButton />
+        </Header>
+      </Header>
       <form className="flex justify-center" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-2 w-full max-w-3xl p-5 justify-between items-center ">
           <Input
@@ -107,7 +114,7 @@ export default function CreateDelivery() {
           {errors.deliveryDate && <span>This field is required</span>}
           <input
             type="submit"
-            className="text-white bg-green-500 py-3 px-8 rounded-lg"
+            className="text-white bg-green-500  hover:bg-green-700 py-3 px-8 rounded-lg cursor-pointer"
           />
         </div>
       </form>

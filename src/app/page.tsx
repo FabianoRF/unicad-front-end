@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { IDelivery } from "./models/delivery";
 import Card from "./components/card";
 import Paginator from "./components/paginator";
+import Link from "next/link";
+import Button from "./components/button";
 
 export default function Home() {
   const [deliveries, setDeliveries] = useState<IDelivery[]>([]);
@@ -32,7 +34,9 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center">
-      <Header></Header>
+      <Header>
+        <Button title="Cadastrar nova rota" />
+      </Header>
       <ul role="list" className="divide-y divide-gray-100 w-full max-w-3xl p-5">
         {isLoading && <div className="text-black">Loading...</div>}
 
