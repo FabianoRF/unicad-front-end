@@ -17,11 +17,7 @@ export type Inputs = {
 };
 
 export default function CreateDelivery() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<Inputs>();
+  const { register, handleSubmit } = useForm<Inputs>();
   const router = useRouter();
 
   const getMinDeliveryDate = () => {
@@ -38,7 +34,7 @@ export default function CreateDelivery() {
       initialLatitude: +data.initialLatitude,
       initialLongitude: +data.initialLongitude,
       finalLatitude: +data.finalLatitude,
-      finalLongitude: +data.finalLatitude,
+      finalLongitude: +data.finalLongitude,
       deliveryDate: new Date(data.deliveryDate),
     };
 
@@ -115,7 +111,6 @@ export default function CreateDelivery() {
             register={register}
             required
           />
-          {errors.deliveryDate && <span>This field is required</span>}
           <input
             type="submit"
             className="text-white bg-green-500  hover:bg-green-700 py-3 px-8 rounded-lg cursor-pointer"
