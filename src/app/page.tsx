@@ -1,17 +1,8 @@
 "use client";
-import Link from "next/link";
 import Header from "./components/header";
 import { useEffect, useState } from "react";
-
-export interface IDelivery {
-  id: number;
-  name: string;
-  deliveryDate: Date;
-  initialLatitude: number;
-  initialLongitude: number;
-  finalLatitude: number;
-  finalLongitude: number;
-}
+import { IDelivery } from "./models/delivery";
+import Card from "./components/card";
 
 export default function Home() {
   const [deliveries, setDeliveries] = useState<IDelivery[]>([]);
@@ -21,7 +12,6 @@ export default function Home() {
     fetch(`${process.env.BASE_URL}/delivery`, { method: "GET" })
       .then((res) => res.json())
       .then((data) => {
-        console.log("data ", data);
         setDeliveries(data.list);
         setLoading(false);
       });
@@ -35,23 +25,12 @@ export default function Home() {
 
         {!isLoading &&
           deliveries.map((delivery) => (
-            <li key={delivery.id} className="flex justify-between gap-x-6 py-5">
-              <div className="flex w-full gap-x-4">
-                <div className="min-w-0 flex-auto">
-                  <p className="text-sm font-semibold leading-6 text-gray-900">
-                    {delivery.name}
-                  </p>
-                  <p className="mt-1 truncate text-xs leading-5 text-gray-500">
-                    {new Date(delivery.deliveryDate).getUTCDate()}
-                  </p>
-                </div>
-                <div className="flex">
-                  <Link href="/route" className="text-black">
-                    Ver rota
-                  </Link>
-                </div>
-              </div>
-            </li>
+            <Card
+              key={delivery.id}
+              id={delivery.id}
+              deliveryDate={delivery.deliveryDate}
+              name={delivery.name}
+            ></Card>
           ))}
       </ul>
     </main>
