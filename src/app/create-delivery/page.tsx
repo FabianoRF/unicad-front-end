@@ -4,8 +4,6 @@ import Header from "../components/header";
 import Input from "../components/input";
 import { ICreateDelivery } from "../models/delivery";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
-import { FiArrowLeft } from "react-icons/fi";
 import BackButton from "../components/backButton";
 
 export type Inputs = {

@@ -22,7 +22,7 @@ export default function Card({ deliveryDate, id, name }: ICardProps) {
         </div>
         <div className="flex flex-col">
           <Link
-            href="/route"
+            href={{ pathname: "/map", query: { id } }}
             className="text-green-500 font-semibold flex justify-between items-center gap-1 text-xs cursor-pointer"
           >
             Ver rota <FiArrowRight className="w-4 h-4" />
