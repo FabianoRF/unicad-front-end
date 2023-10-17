@@ -77,18 +77,18 @@ export default function CreateDelivery() {
           />
           <Input
             label="Digite a latitude do ponto de partida:"
-            name="initialLongitude"
+            name="initialLatitude"
             type="number"
             register={register}
             step="0.00000001"
-            key="initialLongitude"
+            key="initialLatitude"
             required
           />
           <Input
             label="Digite a longitude do ponto de partida:"
             type="number"
-            name="initialLatitude"
-            key="initialLatitude"
+            name="initialLongitude"
+            key="initialLongitude"
             step="0.00000001"
             register={register}
             required
