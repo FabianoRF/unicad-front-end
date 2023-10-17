@@ -7,3 +7,12 @@ export interface IDelivery {
   finalLatitude: number;
   finalLongitude: number;
 }
+
+export interface ICreateDelivery {
+  name: string;
+  deliveryDate: Date;
+  initialLatitude: number;
+  initialLongitude: number;
+  finalLatitude: number;
+  finalLongitude: number;
+}
